@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digvijay Jadhav | Full Stack & GenAI Developer</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%230a0a0a'/><text x='50' y='68' font-family='Inter,Arial,sans-serif' font-size='44' font-weight='900' text-anchor='middle' fill='%2322c55e'>DJ</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    /* Sujeet-style: near-black bg, brighter green, higher contrast whites */
+    --black: #0a0a0a;
+    --black-mid: #111111;
+    --black-border: #1e1e1e;
+    --white: #ffffff;
+    --off-white: #f8fafc;
+    --green: #22c55e;
+    --green-dark: #16a34a;
+    --green-light: #4ade80;
+    --gray-50:  #f9fafb;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+    --gray-900: #0f172a;
+  }
+  html { scroll-behavior: smooth; }
+  section[id] { scroll-margin-top: 68px; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--off-white);
+    color: var(--gray-900);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 72px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--black);
+    height: 68px;
+    border-bottom: 1px solid var(--black-border);
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 72px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+  }
+  .nav-brand {
+    color: var(--white);
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    justify-self: start;
+  }
+  .nav-links {
+    display: flex;
+    gap: 44px;
+    justify-self: center;
+  }
+  .nav-links a {
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.15s;
+    letter-spacing: 0.01em;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-cta-wrap { justify-self: end; }
+  .nav-cta {
+    background: var(--green);
+    color: var(--black);
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s, transform 0.1s;
+    letter-spacing: 0.01em;
+  }
+  .nav-cta:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--black);
+    padding: 96px 0 112px;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 72px;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 72px;
+    align-items: center;
+  }
+  .hero-name {
+    font-size: 64px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+  .hero-role {
+    font-size: 19px;
+    font-weight: 600;
+    color: #d4d4d8;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+  }
+  .hero-tagline {
+    font-size: 16px;
+    font-weight: 500;
+    color: #b4b4b8;
+    margin-bottom: 24px;
+    line-height: 1.7;
+  }
+  .hero-location {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #8888a0;
+    margin-bottom: 44px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .hero-location svg { width: 13px; height: 13px; flex-shrink: 0; }
+  .hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--green);
+    color: var(--black);
+    padding: 11px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.15s, transform 0.1s;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+  .icon-btn {
+    width: 52px; height: 52px;
+    border: 2px solid var(--white);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+  .icon-btn:hover { border-color: var(--green); color: var(--green); }
+  .icon-btn svg { width: 22px; height: 22px; }
+  .hero-photo {
+    width: 280px;
+    height: 350px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 12px;
+    display: block;
+    border: 1px solid #1e1e1e;
+  }
+
+  /* ── ABOUT ── */
+  .about { background: var(--off-white); padding: 88px 0; }
+  .about-label {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--gray-900);
+    letter-spacing: -0.02em;
+    margin-bottom: 44px;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-headline {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--gray-900);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 36px;
+  }
+  .about-divider {
+    border: none;
+    border-top: 1px solid var(--gray-200);
+    margin-bottom: 36px;
+  }
+  .stats-row { display: flex; gap: 56px; }
+  .stat-value {
+    font-size: 44px;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .stat-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 8px;
+  }
+  .about-body-bold {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gray-900);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .about-body {
+    font-size: 15px;
+    color: var(--gray-600);
+    line-height: 1.85;
+  }
+  .about-body p + p { margin-top: 18px; }
+
+  /* ── EXPERIENCE ── */
+  .experience { background: var(--off-white); padding: 0 0 88px; }
+  .exp-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--gray-900);
+    letter-spacing: -0.02em;
+    margin-bottom: 44px;
+  }
+  .exp-item {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 56px;
+    padding: 44px 0;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .exp-item:first-of-type { border-top: 1px solid var(--gray-200); }
+  .exp-left { position: relative; padding-left: 20px; }
+  .exp-left::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 4px;
+    width: 3px;
+    height: calc(100% - 4px);
+    background: var(--green);
+    border-radius: 2px;
+  }
+  .exp-company { font-size: 16px; font-weight: 700; color: var(--gray-900); }
+  .exp-period {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 6px;
+  }
+  .exp-role { font-size: 15px; font-weight: 700; color: var(--gray-900); margin-bottom: 12px; }
+  .exp-desc { font-size: 15px; color: var(--gray-600); line-height: 1.8; }
+
+  /* ── PROJECTS ── */
+  .projects { background: var(--black); padding: 88px 0; }
+  .projects-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0;
+  }
+  .projects-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+  .projects-arrow {
+    color: var(--green);
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 400;
+  }
+  .project-item {
+    display: grid;
+    grid-template-columns: 72px 1fr 180px;
+    gap: 32px;
+    align-items: start;
+    padding: 48px 0;
+    border-top: 1px solid var(--black-border);
+  }
+  .proj-num {
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .proj-name {
+    font-size: 23px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 14px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    transition: color 0.2s;
+  }
+  .project-item:hover .proj-name { color: #22c55e; }
+  .proj-desc {
+    font-size: 15px;
+    color: #71717a;
+    line-height: 1.8;
+    margin-bottom: 22px;
+  }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .proj-tag {
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: var(--white);
+    background: rgba(255,255,255,0.06);
+    padding: 5px 13px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+  .proj-tag:hover { border-color: var(--green); color: var(--green); background: rgba(34,197,94,0.08); }
+  .proj-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+    padding-top: 5px;
+  }
+  .proj-link-code {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--green);
+    border: 1.5px solid var(--green);
+    padding: 7px 14px;
+    border-radius: 7px;
+    transition: background 0.15s, color 0.15s;
+    letter-spacing: 0.01em;
+  }
+  .proj-link-code:hover { background: var(--green); color: var(--black); }
+  .proj-link-code svg { width: 15px; height: 15px; }
+
+  /* ── SKILLS ── */
+  .skills { background: var(--off-white); padding: 88px 0; }
+  .section-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--gray-900);
+    letter-spacing: -0.02em;
+    margin-bottom: 44px;
+  }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .skill-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 32px;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover {
+    border-color: var(--green);
+    box-shadow: 0 0 0 1px var(--green);
+  }
+  .skill-card::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 14px; height: 14px;
+    background: var(--green);
+    border-radius: 0 12px 0 6px;
+  }
+  .skill-cat {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gray-900);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    border: 1.5px solid var(--gray-200);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray-700);
+    background: var(--gray-50);
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .skill-tag:hover { border-color: var(--green); color: var(--green); }
+
+  /* ── EDUCATION ── */
+  .education { background: var(--off-white); padding: 0 0 88px; scroll-margin-top: 68px; }
+  .edu-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: var(--gray-900);
+    letter-spacing: -0.02em;
+    margin-bottom: 36px;
+  }
+  .edu-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 32px 36px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: start;
+    max-width: 600px;
+    background: var(--white);
+    transition: border-color 0.2s;
+  }
+  .edu-card:hover { border-color: var(--green); }
+  .edu-inst { font-size: 17px; font-weight: 700; color: var(--gray-900); margin-bottom: 6px; letter-spacing: -0.01em; }
+  .edu-degree { font-size: 15px; font-weight: 600; color: var(--gray-600); margin-bottom: 6px; }
+  .edu-cgpa { font-size: 14px; color: var(--green); font-weight: 700; }
+  .edu-period {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    padding-top: 3px;
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  .achievements { background: var(--off-white); padding: 0 0 88px; }
+  .ach-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .ach-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    padding: 28px 32px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    background: var(--white);
+    transition: border-color 0.2s;
+  }
+  .ach-card:hover { border-color: var(--green); }
+  .ach-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+  .ach-text { font-size: 15px; color: var(--gray-600); line-height: 1.7; }
+  .ach-text strong { color: var(--gray-900); font-weight: 700; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--black); padding: 52px 0 40px; }
+  .footer-rule { border: none; border-top: 1px solid #2e2e2e; margin-bottom: 32px; }
+  .footer-copy {
+    font-size: 12px;
+    font-weight: 500;
+    color: #3f3f46;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .container { padding: 0 24px; }
+    .nav-inner { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 56px 0 72px; }
+    .hero-inner { padding: 0 24px; grid-template-columns: 1fr; gap: 0; }
+    .hero-photo { display: none; }
+    .hero-name { font-size: 44px; }
+    .about { padding: 64px 0; }
+    .skills { padding: 64px 0; }
+    .experience, .education, .achievements { padding: 0 0 64px; }
+    .projects { padding: 64px 0; }
+    footer { padding: 44px 0 32px; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .exp-item { grid-template-columns: 1fr; gap: 16px; }
+    .project-item { grid-template-columns: 56px 1fr; }
+    .proj-links { display: none; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .ach-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">Digvijay Jadhav</div>
+    <div class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#education">Education</a>
+      <a href="resume.pdf" download="Digvijay_Jadhav_Resume.pdf">Resume</a>
+    </div>
+    <div class="nav-cta-wrap">
+      <a href="mailto:digvijayjadhav0509@gmail.com" class="nav-cta">
+        Let's Connect &rarr;
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-name">Digvijay Jadhav</div>
+      <div class="hero-role">Full Stack Developer &middot; GenAI Developer &middot; BE IT @ PICT Pune</div>
+      <div class="hero-tagline">Building full-stack web apps, agentic AI systems, and RAG pipelines.</div>
+      <div class="hero-location">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Wakad, Pune, IN
+      </div>
+      <div class="hero-actions">
+        <a href="resume.pdf" download="Digvijay_Jadhav_Resume.pdf" class="btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          View Resume
+        </a>
+        <a href="mailto:digvijayjadhav0509@gmail.com" class="icon-btn" title="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/digvijay-jadhav" target="_blank" class="icon-btn" title="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://github.com/Digvijay1102" target="_blank" class="icon-btn" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        </a>
+      </div>
+    </div>
+    <img src="photo.jpg" alt="Digvijay Jadhav" class="hero-photo" onerror="this.style.display='none'">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="about-label">About</div>
+    <div class="about-grid">
+      <div>
+        <h2 class="about-headline">Building real-world AI systems from first principles</h2>
+        <hr class="about-divider">
+        <div class="stats-row">
+          <div>
+            <div class="stat-value">8.46</div>
+            <div class="stat-label">PICT CGPA</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="about-body-bold">Final-year BE in IT at PICT Pune, building full-stack web apps and production AI tools.</p>
+        <div class="about-body">
+          <p>From a RAG-based legal copilot that helps everyday Indians understand their rights, to an agentic email processor with LangGraph and HITL checkpoints — I build systems that work in production, not just demos.</p>
+          <p>Also worked as a Full Stack Developer intern, shipping real features on an enterprise HRMS platform. Navodaya student through Class 12, with a strong foundation in computer science fundamentals.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="experience">
+  <div class="container">
+    <h2 class="exp-title">Work Experience</h2>
+    <div class="exp-item">
+      <div class="exp-left">
+        <div class="exp-company">Akiyam Solutions</div>
+        <div class="exp-period">Feb 2026 &ndash; Present</div>
+      </div>
+      <div>
+        <div class="exp-role">Full Stack Developer Intern</div>
+        <div class="exp-desc">Contributed to end-to-end development of an AI-powered HRMS platform &mdash; built responsive UI components with React, scalable backend APIs with FastAPI and MongoDB, integrated employee records, attendance &amp; leave management modules, and collaborated on deployment using Git.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="projects">
+  <div class="container">
+    <div class="projects-header">
+      <div class="projects-title">Featured Projects</div>
+    </div>
+    <div class="project-item">
+      <div class="proj-num">01</div>
+      <div>
+        <div class="proj-name">Legal Sahayak &mdash; RAG-Based Legal Copilot for India</div>
+        <div class="proj-desc">Helps everyday Indians understand their legal rights &mdash; covers BNS 2023, consumer, labor &amp; rental laws. Returns plain-language answers with citations, confidence scores, and action plans.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Next.js</span>
+          <span class="proj-tag">FastAPI</span>
+          <span class="proj-tag">LangChain</span>
+          <span class="proj-tag">FAISS</span>
+          <span class="proj-tag">Groq API</span>
+          <span class="proj-tag">HuggingFace</span>
+        </div>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/Digvijay1102/legalsahayak" target="_blank" class="proj-link-code">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          See Code
+        </a>
+      </div>
+    </div>
+    <div class="project-item">
+      <div class="proj-num">02</div>
+      <div>
+        <div class="proj-name">MailMind &mdash; Agentic Email Processing System</div>
+        <div class="proj-desc">AI agent that reads emails via Resend webhooks, classifies intent using LLMs, and auto-replies, labels, or escalates &mdash; with a human-in-the-loop checkpoint for uncertain decisions.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">LangGraph</span>
+          <span class="proj-tag">FastAPI</span>
+          <span class="proj-tag">Next.js</span>
+          <span class="proj-tag">PostgreSQL</span>
+          <span class="proj-tag">FAISS</span>
+          <span class="proj-tag">Groq</span>
+        </div>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/Digvijay1102/mailmind" target="_blank" class="proj-link-code">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          See Code
+        </a>
+      </div>
+    </div>
+    <div class="project-item">
+      <div class="proj-num">03</div>
+      <div>
+        <div class="proj-name">Fake News Detector &mdash; BERT/RoBERTa Classifier</div>
+        <div class="proj-desc">ML model that classifies news articles as real or fake using transformer-based NLP. Strong performance distinguishing misinformation with accuracy, precision, recall, and F1-score evaluation.</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">HuggingFace</span>
+          <span class="proj-tag">BERT</span>
+          <span class="proj-tag">Scikit-learn</span>
+          <span class="proj-tag">Pandas</span>
+        </div>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/Digvijay1102/fake-news-detector" target="_blank" class="proj-link-code">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          See Code
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills">
+  <div class="container">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-cat">Languages &amp; Databases</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">C++</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">MySQL</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">AI &amp; ML</div>
+        <div class="skill-tags">
+          <span class="skill-tag">LangGraph</span>
+          <span class="skill-tag">LangChain</span>
+          <span class="skill-tag">RAG Systems</span>
+          <span class="skill-tag">pgvector</span>
+          <span class="skill-tag">PyTorch</span>
+          <span class="skill-tag">NLP</span>
+          <span class="skill-tag">BERT</span>
+          <span class="skill-tag">Agentic AI</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-cat">Backend &amp; Infrastructure</div>
+        <div class="skill-tags">
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Next.js</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">AWS</span>
+          <span class="skill-tag">BullMQ</span>
+          <span class="skill-tag">GitHub Actions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="education">
+  <div class="container">
+    <h2 class="edu-title">Education</h2>
+    <div class="edu-card">
+      <div>
+        <div class="edu-inst">Pune Institute of Computer Technology</div>
+        <div class="edu-degree">B.E. in Information Technology</div>
+        <div class="edu-cgpa">CGPA: 8.46</div>
+      </div>
+      <div class="edu-period">Aug 2023 &ndash; Present</div>
+    </div>
+    <div class="edu-card" style="margin-top:16px;">
+      <div>
+        <div class="edu-inst">Sri Chaitanya Junior College, Pune</div>
+        <div class="edu-degree">Class 12 &mdash; Science (PCM)</div>
+        <div class="edu-cgpa">Percentage: 73.00%</div>
+      </div>
+      <div class="edu-period">June 2021 &ndash; May 2023</div>
+    </div>
+    <div class="edu-card" style="margin-top:16px;">
+      <div>
+        <div class="edu-inst">Jawahar Navodaya Vidyalaya, Solapur</div>
+        <div class="edu-degree">Class 10</div>
+        <div class="edu-cgpa">Percentage: 92.60%</div>
+      </div>
+      <div class="edu-period">June 2016 &ndash; May 2021</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="achievements" id="achievements">
+  <div class="container">
+    <h2 class="section-title">Achievements &amp; Leadership</h2>
+    <div class="ach-grid">
+      <div class="ach-card">
+        <div class="ach-icon">🏆</div>
+        <div class="ach-text"><strong>Best Outgoing Student 2022–23</strong> — recognized for academic and extracurricular excellence.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">👥</div>
+        <div class="ach-text"><strong>Domain Coordinator, INC PICT'25</strong> — selected for communication, organizational, and team management skills.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">📅</div>
+        <div class="ach-text"><strong>Organized Xenia 2025</strong> — annual technical event for the CSI Club at PICT Pune.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-icon">⭐</div>
+        <div class="ach-text"><strong>Class Leader, Grade 6–12</strong> — at Jawahar Navodaya Vidyalaya, entrusted with responsibilities by faculty and peers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <hr class="footer-rule">
+  <div class="footer-copy">&copy; 2026 Digvijay Jadhav. All Rights Reserved.</div>
+</footer>
+
+</body>
+</html>
